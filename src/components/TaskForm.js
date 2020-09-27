@@ -3,7 +3,7 @@ import { TaskListContext } from '../context/TaskListContext';
 
 
 export const TaskForm = () => {
-    const { addTask } = useContext(TaskListContext);
+    const { addTask, removeAllTask } = useContext(TaskListContext);
     const [title, setTitle] = useState('');
 
     const handleSubmit = (e) => {
@@ -35,6 +35,7 @@ export const TaskForm = () => {
                     className="btn add-task-btn"
                 >Add Task</button>
                 <button
+                    onClick = {removeAllTask}
                     className="btn clear-btn"
                 >Delete All</button>
             </div>
