@@ -3,22 +3,25 @@ import TaskList from './TaskList';
 import TaskListContextProvider from '../context/TaskListContext';
 import '../App.css';
 import { TaskForm } from './TaskForm';
+import { Header } from './Header';
 
 const App = () => {
     return (
-        <div className="container">
-            <div className="app-wrapper">
-                <div className="main">
-                    <TaskListContextProvider>
+        <TaskListContextProvider>
+            <div className="container">
+                <div className="app-wrapper">
+                    <Header />
+                    <div className="main">
+
                         <div>
                             <TaskForm />
                             <TaskList />
                         </div>
-                    </TaskListContextProvider>
+
+                    </div>
                 </div>
             </div>
-        </div>
-
+        </TaskListContextProvider>
 
     )
 }
