@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react';
-// import uuid from 'uuid';
+import { v1 as uuid } from "uuid";
+
 
 export const TaskListContext = createContext();
 
@@ -13,7 +14,7 @@ const TaskListContextProvider = (props) => {
     const [editItem, setEditItem] = useState(null);
 
     const addTask = (title) => {
-        setTasks([...tasks, { title, id: tasks.length * 1 + 1 }])
+        setTasks([...tasks, { title, id: uuid.v4 }])
     }
     const removeTask = (id) => {
         setTasks(
@@ -23,13 +24,14 @@ const TaskListContextProvider = (props) => {
     const removeAllTask = () => {
         setTasks([]);
     }
+    // edit 
     const findItem = (id) => {
         const itemToEdit = tasks.find(task => task.id === id);
         // console.log(itemToEdit);
         setEditItem(itemToEdit);
     }
     const editTask = (title, id) => {
-        const newTasks = tasks.map(task => task.id === id ? { title, id } : tasks);
+        const newTasks = tasks.map(task => task.id === id ? { title, id } : task);
         setTasks(newTasks);
     }
     return (
